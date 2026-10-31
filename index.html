@@ -31,7 +31,32 @@ body{background:var(--page);color:var(--ink);font-family:var(--font);font-weight
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px;
   -webkit-user-select:none;user-select:none;touch-action:manipulation;overscroll-behavior:none;-webkit-tap-highlight-color:transparent}
 .wrap{max-width:min(720px,calc((100dvh - 250px) * 1.143));min-width:min(100%,300px);margin:0 auto;display:flex;flex-direction:column;gap:10px}
-@media (hover:hover) and (pointer:fine){.wrap{max-width:min(780px,calc((100dvh - 90px) * 1.143))}}
+@media (hover:hover) and (pointer:fine){.wrap{max-width:min(780px,calc((100dvh - 90px) * 1.143))}.topbar,.botbar{display:none!important}}
+/* スマホ：画面を まん中に、上と下に かざりの 帯 */
+@media not ((hover:hover) and (pointer:fine)){
+  body{padding-block:max(8px,env(safe-area-inset-top,0px)) max(8px,env(safe-area-inset-bottom,0px));box-sizing:border-box;min-height:100dvh;display:flex;flex-direction:column}
+  .wrap{flex:1;justify-content:space-between;max-width:min(720px,calc((100dvh - 330px) * 1.143));width:100%}
+  .center{display:flex;flex-direction:column;gap:10px;margin:auto 0}
+}
+.topbar,.botbar{display:flex;align-items:center;gap:.6em;color:var(--dim);font-size:13px}
+.topbar{justify-content:space-between;align-items:flex-start;padding:2px 2px 0}
+.topbar .tl{display:flex;flex-direction:column;gap:5px;min-width:0}
+.topbar .tr{display:flex;flex-direction:column;align-items:flex-end;gap:5px;min-width:0}
+.topbar .faces{display:flex;gap:4px;min-height:0}
+.topbar .faces .portrait{width:clamp(30px,9.5vw,40px);border-width:1.5px}
+.topbar .faces .portrait.dead{filter:grayscale(1) brightness(.55)}
+.topbar .chip.place{max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#cfd3ea}
+.topbar .logo{font-weight:700;font-size:20px;letter-spacing:.12em;background:linear-gradient(180deg,#fff3c4,#f2c14e 55%,#b07a1e);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 #000) drop-shadow(0 0 .35em rgba(242,193,78,.35))}
+.topbar .stat{display:flex;gap:.5em;align-items:center;white-space:nowrap}
+.topbar .chip{background:var(--pad);border:1px solid var(--pad-hi);border-radius:999px;padding:3px 10px;color:var(--ink)}
+.topbar .chip.g{color:var(--gold)}
+.botbar{flex-direction:column;gap:6px;padding-bottom:2px}
+.orn{width:100%;height:12px;background:
+  linear-gradient(90deg,transparent,rgba(242,193,78,.55) 20%,rgba(242,193,78,.55) 80%,transparent) center/100% 1px no-repeat}
+.orn::after{content:'✦';display:block;text-align:center;color:var(--gold);font-size:12px;line-height:12px;text-shadow:0 0 .5em rgba(242,193,78,.6)}
+.botbar .bless{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;min-height:24px}
+.botbar .bless span{font-size:12px;padding:3px 9px;border-radius:999px;background:linear-gradient(180deg,#2c3254,#1d2138);border:1px solid rgba(242,193,78,.45);color:#f5e4b0}
+.botbar .bless .none{border-color:var(--pad-hi);color:var(--dim)}
 .screen{position:relative;width:100%;aspect-ratio:256/224;background:#000;container-type:inline-size;overflow:hidden;border-radius:6px;box-shadow:0 0 0 3px #000,0 0 0 6px var(--pad-hi),0 10px 30px rgba(0,0,0,.6)}
 #cv{width:100%;height:100%;display:block;image-rendering:pixelated;image-rendering:crisp-edges}
 #bglayer{position:absolute;inset:0;pointer-events:none;background-size:cover;background-position:center;background-color:#05061a}
@@ -103,18 +128,23 @@ body{background:var(--page);color:var(--ink);font-family:var(--font);font-weight
 .ending h2{margin:0;font-weight:700;font-size:2.4em;letter-spacing:.3em;color:#fff6d8;text-shadow:0 0 .4em rgba(255,200,120,.8),0 .08em 0 #7a3c00}
 .ending p{margin:.4em 0 0;color:#fff;text-shadow:0 .08em 0 #000;white-space:pre-wrap}
 .maptitle{position:absolute;left:0;right:0;top:1.5%;text-align:center;font-size:.85em;text-shadow:0 .1em 0 #000}
-.pad{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 4px 2px}
-.dpad{position:relative;width:148px;height:148px;flex:none;touch-action:none;cursor:pointer}
-.dpad .arm{position:absolute;background:var(--pad);box-shadow:inset 0 -3px 0 var(--pad-lo),inset 0 2px 0 var(--pad-hi)}
-.dpad .v{left:50px;width:48px;top:0;height:148px;border-radius:8px}
-.dpad .h{top:50px;height:48px;left:0;width:148px;border-radius:8px}
-.dpad .tri{position:absolute;color:var(--dim);font-size:13px;line-height:1}
+.pad{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:8px 6px 2px;box-sizing:border-box;width:100%}
+.dpad{position:relative;width:clamp(96px,min(33vw,24dvh),170px);aspect-ratio:1;flex:none;margin-left:6px;touch-action:none;cursor:pointer}
+.dpad .well{position:absolute;inset:-5%;border-radius:50%;background:radial-gradient(circle at 50% 45%,#161a32 0%,#0b0d1c 70%);box-shadow:inset 0 .25em .6em rgba(0,0,0,.75),0 1px 0 rgba(255,255,255,.07)}
+.dpad .cross{position:absolute;inset:0;transition:transform .06s ease-out;filter:drop-shadow(0 4px 0 #06070f) drop-shadow(0 7px 6px rgba(0,0,0,.55))}
+.dpad .shape,.dpad .shine{position:absolute;inset:0;clip-path:polygon(33% 0,67% 0,67% 33%,100% 33%,100% 67%,67% 67%,67% 100%,33% 100%,33% 67%,0 67%,0 33%,33% 33%)}
+.dpad .shape{background:linear-gradient(155deg,#4a5390 0%,#2e3460 42%,#1c2040 100%)}
+.dpad .shine{inset:3%;background:linear-gradient(180deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.04) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.25) 100%)}
+.dpad .dimple{position:absolute;left:50%;top:50%;width:22%;height:22%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 50% 35%,#171a33,#2a3058);box-shadow:inset 0 .15em .3em rgba(0,0,0,.65),0 1px 0 rgba(255,255,255,.08)}
+.dpad.on-up .cross{transform:perspective(420px) rotateX(12deg)}.dpad.on-down .cross{transform:perspective(420px) rotateX(-12deg)}
+.dpad.on-left .cross{transform:perspective(420px) rotateY(-12deg)}.dpad.on-right .cross{transform:perspective(420px) rotateY(12deg)}
+.dpad .tri{position:absolute;color:#8d93b8;font-size:clamp(10px,3.2vw,13px);line-height:1;transform:translate(-50%,-50%);text-shadow:0 1px 0 rgba(0,0,0,.7)}
 .dpad.on-up .t-up,.dpad.on-down .t-down,.dpad.on-left .t-left,.dpad.on-right .t-right{color:var(--gold)}
 .mid{display:flex;flex-direction:column;gap:8px;align-items:center}
 .sbtn{white-space:nowrap;font:inherit;font-size:12px;letter-spacing:.06em;color:var(--ink);background:var(--pad);border:none;border-radius:999px;padding:6px 12px;cursor:pointer;box-shadow:inset 0 -2px 0 var(--pad-lo)}
-.ab{display:flex;gap:12px;align-items:flex-end;flex:none}
-.round{font:inherit;width:62px;height:62px;border-radius:50%;border:none;font-size:20px;cursor:pointer;color:#1a1200;box-shadow:inset 0 -4px 0 rgba(0,0,0,.35),0 3px 0 #000;touch-action:none}
-.round.a{background:var(--gold);margin-bottom:22px}
+.ab{display:flex;gap:clamp(6px,2.5vw,12px);align-items:flex-end;flex:none}
+.round{font:inherit;width:clamp(44px,min(14vw,10dvh),70px);height:clamp(44px,min(14vw,10dvh),70px);border-radius:50%;border:none;font-size:clamp(16px,5vw,20px);cursor:pointer;color:#1a1200;box-shadow:inset 0 -4px 0 rgba(0,0,0,.35),0 3px 0 #000;touch-action:none}
+.round.a{background:var(--gold);margin-bottom:clamp(14px,5vw,22px)}
 .round.b{background:#c9cde0}
 .round:active,.sbtn:active{transform:translateY(2px)}
 button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -172,6 +202,8 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 <body>
 
 <div class="wrap">
+  <div class="topbar" aria-label="ゲームの じょうほう"><div class="tl"><span class="logo">ルミナ伝承</span><div class="faces" id="tbFaces"></div></div><div class="tr"><span class="stat"><span class="chip" id="tbWorld" hidden></span><span class="chip g" id="tbGold" hidden>0 G</span></span><span class="chip place" id="tbPlace" hidden></span></div></div>
+  <div class="center">
   <div class="screen" id="screen">
     <canvas id="cv" width="256" height="224"></canvas>
     <div id="bglayer" hidden></div>
@@ -184,11 +216,12 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
   </div>
   <div class="pad" aria-label="コントローラー">
     <div class="dpad" id="dpad" role="group" aria-label="方向キー">
-      <div class="arm v"></div><div class="arm h"></div>
-      <span class="tri t-up" style="left:68px;top:10px">▲</span>
-      <span class="tri t-down" style="left:68px;bottom:10px">▼</span>
-      <span class="tri t-left" style="left:10px;top:67px">◀</span>
-      <span class="tri t-right" style="right:10px;top:67px">▶</span>
+      <div class="well"></div>
+      <div class="cross"><div class="shape"></div><div class="shine"></div><div class="dimple"></div>
+      <span class="tri t-up" style="left:50%;top:13%">▲</span>
+      <span class="tri t-down" style="left:50%;top:87%">▼</span>
+      <span class="tri t-left" style="left:13%;top:50%">◀</span>
+      <span class="tri t-right" style="left:87%;top:50%">▶</span></div>
     </div>
     <div class="mid">
       <button class="sbtn" id="bMenu" type="button">メニュー</button>
@@ -199,6 +232,8 @@ button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
       <button class="round a" id="bA" type="button" aria-label="Aボタン">A</button>
     </div>
   </div>
+  </div>
+  <div class="botbar"><div class="orn"></div><div class="bless" id="tbBless" aria-label="女神の加護"></div></div>
   <div class="keys">
     <span><b>↑</b>前進</span><span><b>↓</b>うしろへ</span><span><b>←→</b>向きをかえる</span><span><b>Z</b><b>Enter</b>けってい・しらべる</span><span><b>X</b><b>Esc</b>キャンセル・メニュー</span>
     <button class="sbtn" id="bSound2" type="button">音 ON</button>
@@ -1747,8 +1782,8 @@ function applyWorld(){
 async function goddessScene(){await fade(1);scene='goddess';clearUI();updBar();updHud();playBgm('goddess');await fade(0);}
 async function chooseBlessing(title){
   const own=G?(G.blessings||[]):[];const keys=BLESS_KEYS.filter(k=>!own.includes(k));let info=null;
-  const bi=await choose(keys.map(k=>BLESSINGS[k].name),{title:title||'女神の加護',style:{left:'3%',top:'31%',width:'38%'},rows:5,cancel:false,
-    onMove:i=>{if(info)info.remove();info=infoWin(BLESSINGS[keys[i]].desc,{left:'3%',top:'66%',right:'3%'});}});
+  const bi=await choose(keys.map(k=>BLESSINGS[k].name),{title:title||'女神の加護',style:{left:'3%',top:'31%',width:'40%'},rows:4,cancel:false,
+    onMove:i=>{if(info)info.remove();info=infoWin(BLESSINGS[keys[i]].desc,{left:'3%',bottom:'3%',right:'3%'});}});
   if(info)info.remove();return keys[bi];
 }
 async function worldClear(){
@@ -2159,11 +2194,24 @@ function camera(){
 }
 // 町（王都）とタイトルは、絵を背景レイヤーにそのまま表示する
 let bgCur=null;
+let barKey='';
+function syncBars(){const w=G&&G.world&&scene!=='title'?curW().title:'';const g=G&&scene!=='title'&&scene!=='goddess'?G.gold:null;
+  const bl=G&&scene!=='title'?(G.blessings||[]):[];
+  const pl=!G||scene==='title'||scene==='goddess'?'':scene==='town'&&curTown?TOWNS[curTown].name:(map&&map.name)||'';
+  const pt=G&&scene!=='title'&&scene!=='goddess'?(G.party||[]):[];const pk=pt.map(m=>m.race+m.job+m.sex+(m.hp>0?1:0)).join(',');
+  const k=w+'|'+g+'|'+bl.join(',')+'|'+pl+'|'+pk;if(k===barKey)return;barKey=k;
+  const tp=document.getElementById('tbPlace'),tf=document.getElementById('tbFaces');
+  if(tp){tp.textContent=pl;tp.hidden=!pl;}
+  if(tf){tf.textContent='';pt.forEach(m=>{const d=portraitEl(m);if(m.hp<=0)d.classList.add('dead');d.title=m.name;tf.appendChild(d);});}
+  const tw=document.getElementById('tbWorld'),tg=document.getElementById('tbGold'),tb=document.getElementById('tbBless');if(!tw)return;
+  tw.textContent=w;tw.hidden=!w;tg.hidden=g==null;if(g!=null)tg.textContent=g+' G';
+  tb.textContent='';if(bl.length)bl.forEach(b=>{const s=document.createElement('span');s.textContent='✦ '+BLESSINGS[b].name;tb.appendChild(s);});
+  else{const s=document.createElement('span');s.className='none';s.textContent='女神の加護は まだ ありません';tb.appendChild(s);}}
 function syncBg(){const L=document.getElementById('bglayer');if(!L)return;
   const want=scene==='title'?'assets/title.jpg':(scene==='town'&&curTown==='lumina'&&G)?`assets/town${G.world||1}.jpg`:(scene==='town'&&curTown==='selka')?'assets/selka.jpg':'';
   if(want!==bgCur){bgCur=want;L.style.backgroundImage=want?`url(${want})`:'';L.hidden=!want;}
   const gl=document.getElementById('goddesslayer');if(gl){const sg=scene==='goddess';if(gl.hidden===sg)gl.hidden=!sg;}}
-function loop(now){syncBg();
+function loop(now){syncBg();syncBars();
   const dt=Math.min(50,now-last);last=now;frame++;
   if(scene==='explore'&&map){
     if(anim){anim.t+=dt;if(anim.t>=anim.dur){const was=anim;anim=null;if(was.type==='move')onArrive();}}
