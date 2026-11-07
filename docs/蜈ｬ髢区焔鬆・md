@@ -53,9 +53,9 @@ GitHub に ファイルを のせて、GitHub Pages で スマホから あそ�
 1. 変更した ファイルを 同じ ように アップロードして 上書きする（リポジトリの「Add file」→「Upload files」）。
 2. `sw.js` を ひらいて 鉛筆マークで 編集し、
    ```js
-   const CACHE = 'lumina-densho-v1';
+   const CACHE = 'lumina-densho-v3';
    ```
-   の 数字を 1つ ふやす（`v2`、`v3` …）。
+   の 数字を 1つ ふやす（いまは `v3` なので、次は `v4`）。
 3. 「Commit changes」を おす。1〜2分で 公開ページに 反映されます。
 
 `CACHE` の 名前を かえないと、すでに ホーム画面に 追加している スマホでは 古い 画像が のこることが あります。

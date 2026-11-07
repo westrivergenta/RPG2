@@ -1,6 +1,6 @@
 // ルミナ伝承 サービスワーカー
 // ゲームを 更新したら CACHE の 名前（v1 → v2 …）を かえてください。
-const CACHE = 'lumina-densho-v1';
+const CACHE = 'lumina-densho-v3';
 const FILES = [
   './', 'index.html', 'manifest.webmanifest',
   'assets/alliance.jpg', 'assets/gates.png', 'assets/goddess.webp', 'assets/monsters.webp',

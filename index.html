@@ -355,19 +355,19 @@ const RACES={
 const RACE_KEYS=['human','elf','dwarf','hobbit','beast'];
 const JOBS={
   hero:{name:'勇者',tier:1,cap:BASE_CAP,base:[20,4,6,4,6,4,4,4],g:[5,1.4,1.8,1.2,1.4,1.2,1.1,1],start:['ssword','cloth'],eq:['sword','spear','dagger','cloth','light','heavy'],adv:['hero_l'],
-    skills:{3:'heal',5:'fire',7:'ret',9:'guard',12:'thunder',15:'hiheal',19:'lightning'},desc:'女神に えらばれた 主人公。\nこうげき・かいふく・じゅもんを はばひろく おぼえる。'},
+    skills:{3:'heal',5:'fire',7:'ret',9:'guard',10:'barrier',12:'thunder',15:'hiheal',19:'lightning'},desc:'女神に えらばれた 主人公。\nこうげき・かいふく・じゅもんを はばひろく おぼえる。'},
   fighter:{name:'戦士',tier:1,cap:BASE_CAP,base:[22,0,8,0,6,2,3,1],g:[6,0,2.4,0,1.6,0.6,1,0.3],start:['axe1','leather'],eq:['sword','axe','mace','spear','dagger','cloth','light','heavy'],adv:['kensei','berserk'],
     skills:{1:'nagi',4:'kabuto',10:'majin',16:'zenryoku'},desc:'ぶつりこうげきの エキスパート。\nおのや つるぎで てきを なぎはらう。'},
   knight:{name:'騎士',tier:1,cap:BASE_CAP,base:[20,4,6,2,8,1,2,1],g:[5.5,1,1.8,0.6,2.2,0.4,0.7,0.3],start:['ssword','leather'],eq:['sword','mace','spear','cloth','light','heavy'],adv:['paladin','dragoon'],
-    skills:{1:'cover',3:'bash',6:'heal',9:'phalanx',13:'holyblade'},desc:'なかまを まもる たての やくめ。\nかばう・ファランクスが つかえる。'},
+    skills:{1:'cover',3:'bash',6:'heal',9:'phalanx',11:'barrier',13:'holyblade'},desc:'なかまを まもる たての やくめ。\nかばう・ファランクスが つかえる。'},
   monk:{name:'武闘家',tier:1,cap:BASE_CAP,base:[18,0,7,0,4,7,5,3],g:[5,0,2,0,1.1,1.6,1.3,0.6],start:[null,'cloth'],eq:['claw','cloth','light'],adv:['master','ninja'],unarmed:true,crit:0.1,
     skills:{1:'seiken',5:'kick',9:'kikou',15:'hyaku'},desc:'すでで たたかう 格闘家。\nかいしんの いちげきが でやすい。'},
   hunter:{name:'狩人',tier:1,cap:BASE_CAP,base:[16,2,5,2,4,6,7,4],g:[4.2,0.6,1.6,0.6,1,1.5,1.8,0.9],start:['sbow','cloth'],eq:['bow','dagger','cloth','light'],adv:['sniper','ranger'],
     skills:{1:'aim',4:'sleeparrow',8:'rain',13:'deadshot',18:'double'},desc:'ゆみの つかいて。 うしろの\nれつからでも いりょくが おちない。'},
   mage:{name:'魔法使い',tier:1,cap:BASE_CAP,base:[12,10,1,8,2,3,2,2],g:[2.8,3.2,0.4,2.4,0.6,0.8,0.5,0.5],start:['rod','cloth'],eq:['staff','dagger','cloth','robe'],adv:['archmage','sage'],
-    skills:{1:'fire',3:'sleep',5:'blizz',7:'blaze',10:'thunder',13:'freeze',16:'inferno',19:'meteor'},desc:'こうげきの じゅもんを あやつる。\nうたれよわいので うしろの れつへ。'},
+    skills:{1:'fire',3:'sleep',5:'blizz',7:'blaze',10:'thunder',12:'barrier',13:'freeze',16:'inferno',19:'meteor'},desc:'こうげきの じゅもんを あやつる。\nうたれよわいので うしろの れつへ。'},
   priest:{name:'僧侶',tier:1,cap:BASE_CAP,base:[15,8,3,6,4,2,2,3],g:[3.5,2.6,0.8,1.9,1.1,0.7,0.5,0.7],start:['club','cloth'],eq:['mace','staff','cloth','light','robe'],adv:['bishop','templar'],
-    skills:{1:'heal',3:'guard',7:'hiheal',11:'healall',14:'revive',17:'holy',19:'fullheal'},desc:'かいふくと まもりの じゅもん。\nパーティの いのちづな。'},
+    skills:{1:'heal',3:'guard',7:'hiheal',9:'barrier',11:'healall',14:'revive',17:'holy',19:'fullheal'},desc:'かいふくと まもりの じゅもん。\nパーティの いのちづな。'},
   // ---- advanced (上位職) : base = 転職ボーナス ----
   hero_l:{name:'光の勇者',tier:2,cap:ADV_CAP,from:'hero',base:[30,10,6,4,6,4,4,4],g:[6,1.8,2.2,1.5,1.8,1.4,1.3,1.2],eq:['sword','spear','dagger','katana','cloth','light','heavy'],
     skills:{20:'hikarinotachi',24:'fullheal',28:'saintnova'},desc:'光の 力に めざめた 勇者。\nすべての のうりょくが のびる。'},
@@ -446,7 +446,7 @@ const WORLDS=[null,
     intro:['この 世界は ドワーフの 王が おさめる くに。\n王都ドルムガルドで 王が あなたを まっています。'],
     rumors:['ドワーフの 宝剣が 風の塔で ねむっとる。\nドワーフにしか ふるえん つるぎじゃ。','獣人を なかまにするなど ありえん。\nあやつらは 魔王の けんぞくじゃ。']},
   {n:5,title:'第5の世界',short:'第5',capital:'れんごう都市エルトリア',plain:'エルトリア平原',king:'れんごう王',kingRace:'alliance',fav:null,evil:'human',treasure:null,scale:0.7,expScale:1.0,demonScale:1.0,solo:true,
-    demon:{name:'魔王ヴァルグ',art:'varg',short:'ヴァルグ',race:'human',hp:4420,atk:210,def:94,pal:{a:'#5a2a7a',b:'#3a1a52',c:'#b02a3a',e:'#ffef5a',p:'#c00',w:'#f0f0f0',r:'#c00'}},
+    demon:{name:'魔王ヴァルグ',art:'varg',short:'ヴァルグ',race:'human',hp:8000,atk:210,def:94,pal:{a:'#5a2a7a',b:'#3a1a52',c:'#b02a3a',e:'#ffef5a',p:'#c00',w:'#f0f0f0',r:'#c00'}},
     evilLine:'人間は よくぶかく あらそいを このむ たみ。\nその 人間の なかから 魔王が うまれたのじゃ。',
     kingLines:['ここは 獣人・ホビット・エルフ・ドワーフの\n4つの たみが つくる れんごう国じゃ。','東の海に 人間の 魔王ヴァルグが あらわれ\n世界を やみに しずめようと しておる。','この くにでは 人間は 魔王の 一族として いみきらわれておる。\nだが 女神の使いならば はなしは べつじゃ。'],
     intro:['ここが さいごの 世界。 獣人・ホビット・エルフ・ドワーフの\n4つの たみが つくる れんごう国です。','れんごう都市エルトリアで 王が あなたを まっています。\nどんな ときも わたしは あなたを ささえます。'],
@@ -471,7 +471,7 @@ const SK={
   // ---- 職業：物理技 ----
   nagi:{name:'なぎはらい',mp:3,target:'enemies',kind:'phys',mult:0.75,desc:'てき ぜんたいに こうげき'},
   kabuto:{name:'かぶとわり',mp:4,target:'enemy',kind:'phys',mult:1.8,desc:'つよい いちげき'},
-  majin:{name:'まじんぎり',mp:7,target:'enemy',kind:'phys',mult:3.2,acc:0.65,desc:'あたれば きょうれつ'},
+  majin:{name:'まじんぎり',mp:7,target:'enemy',kind:'phys',mult:2.4,acc:0.65,desc:'あたれば きょうれつ'},
   zenryoku:{name:'ぜんりょくなぎ',mp:10,target:'enemies',kind:'phys',mult:1.4,desc:'てき ぜんたいに つよい こうげき'},
   bash:{name:'シールドバッシュ',mp:3,target:'enemy',kind:'phys',mult:1.2,stun:0.45,desc:'てきを ひるませる'},
   cover:{name:'かばう',mp:2,target:'ally',kind:'cover',desc:'なかま ひとりの ダメージを かわりに うける'},
@@ -487,7 +487,7 @@ const SK={
   deadshot:{name:'いちげきひっさつ',mp:9,target:'enemy',kind:'phys',mult:1.2,kill:0.3,ranged:true,desc:'まれに てきを いっぱつで たおす'},
   double:{name:'れんしゃ',mp:12,target:'enemy',kind:'phys',mult:1.5,hits:[2,2],ranged:true,desc:'つよい 2れんぞく こうげき'},
   // ---- 女神の加護 ----
-  brave:{name:'ブレイブスラッシュ',mp:5,target:'enemy',kind:'phys',mult:2.5,pierce:true,desc:'女神の 力を やどす ひっさつわざ'},
+  brave:{name:'ブレイブスラッシュ',mp:5,target:'enemy',kind:'phys',mult:3.4,pierce:true,crit:0.1,desc:'女神の 力を やどす ひっさつわざ。\nまもりを つらぬき かいしんも でやすい'},
   grace:{name:'女神の息吹',mp:0,target:'allies',kind:'grace',desc:'1せんとう 1かい。 ぜんいん ぜんかい'},
   megaikazuchi:{name:'女神の雷',mp:10,target:'enemies',kind:'magic',pow:[88,106],fx:'zap',desc:'女神の いかずちが てき ぜんたいを うつ'},
   // ---- 種族 ----
@@ -518,6 +518,7 @@ const SK={
   holy:{name:'ホーリー',mp:14,target:'enemy',kind:'magic',pow:[78,92],fx:'holy',desc:'せいなる 光で こうげき'},
   sleep:{name:'スリープ',mp:3,target:'enemies',kind:'sleep',rate:0.6,desc:'てきを ねむらせる'},
   guard:{name:'ガード',mp:3,target:'allies',kind:'defup',desc:'なかまの みのまもりが あがる'},
+  barrier:{name:'マジックバリア',mp:5,target:'allies',kind:'barrier',desc:'てきの じゅもん・ブレスなどの ダメージを\nはんぶんに する（その せんとうの あいだ）'},
   heal:{name:'ヒール',mp:3,target:'ally',kind:'heal',pow:[30,40],field:true,desc:'HPを かいふく'},
   hiheal:{name:'ハイヒール',mp:6,target:'ally',kind:'heal',pow:[85,100],field:true,desc:'HPを おおきく かいふく'},
   healall:{name:'ヒールオール',mp:12,target:'allies',kind:'heal',pow:[55,70],field:true,desc:'なかま ぜんいんを かいふく'},
@@ -527,26 +528,26 @@ const SK={
   // ---- 上位職 ----
   hikarinotachi:{name:'光のたち',mp:12,target:'enemies',kind:'phys',mult:1.6,pierce:true,desc:'てき ぜんたいを 光の つるぎで'},
   saintnova:{name:'セイントノヴァ',mp:20,target:'enemies',kind:'magic',pow:[110,130],fx:'holy',desc:'せいなる ばくはつで てき ぜんたいを'},
-  iai:{name:'いあいぎり',mp:6,target:'enemy',kind:'phys',mult:2.2,crit:0.3,desc:'かいしんが でやすい するどい いちげき'},
+  iai:{name:'いあいぎり',mp:6,target:'enemy',kind:'phys',mult:1.8,crit:0.3,desc:'かいしんが でやすい するどい いちげき'},
   tsubame:{name:'つばめがえし',mp:8,target:'enemy',kind:'phys',mult:1.3,hits:[2,2],desc:'すばやい 2れんげき'},
   mugen:{name:'むげんいっとう',mp:16,target:'enemies',kind:'phys',mult:1.8,pierce:true,desc:'てき ぜんたいを きりさく おうぎ'},
   chinoikari:{name:'ちのいかり',mp:4,target:'self',kind:'selfatk',desc:'じぶんの こうげき力が おおきく あがる'},
-  daisetsudan:{name:'だいせつだん',mp:10,target:'enemy',kind:'phys',mult:3.5,acc:0.8,desc:'あたれば すさまじい いちげき'},
+  daisetsudan:{name:'だいせつだん',mp:10,target:'enemy',kind:'phys',mult:2.6,acc:0.8,desc:'あたれば すさまじい いちげき'},
   bunmawashi:{name:'ぶんまわし',mp:12,target:'enemies',kind:'phys',mult:1.6,desc:'てき ぜんたいを なぎたおす'},
   chikai:{name:'まもりのちかい',mp:6,target:'none',kind:'coverall',desc:'このターン なかまへの ぶつりこうげきを すべて うける'},
   grandcross:{name:'グランドクロス',mp:18,target:'enemies',kind:'magic',pow:[90,110],fx:'holy',desc:'せいなる じゅうじで てき ぜんたいを'},
-  jump:{name:'ジャンプ',mp:6,target:'enemy',kind:'phys',mult:2.6,pierce:true,desc:'たかく とび やりで つらぬく'},
+  jump:{name:'ジャンプ',mp:6,target:'enemy',kind:'phys',mult:2.0,pierce:true,desc:'たかく とび やりで つらぬく'},
   ryunoibuki:{name:'りゅうのいぶき',mp:12,target:'enemies',kind:'magic',pow:[60,75],fx:'fire',desc:'りゅうの ほのおで てき ぜんたいを'},
-  highjump:{name:'ハイジャンプ',mp:14,target:'enemy',kind:'phys',mult:4.0,pierce:true,desc:'さらに たかく とび きょうれつな いちげき'},
+  highjump:{name:'ハイジャンプ',mp:14,target:'enemy',kind:'phys',mult:2.8,pierce:true,desc:'さらに たかく とび きょうれつな いちげき'},
   shinkuuha:{name:'しんくうは',mp:10,target:'enemies',kind:'phys',mult:1.3,desc:'しんくうの は で てき ぜんたいを'},
   meisou:{name:'めいそう',mp:6,target:'self',kind:'selfheal',ratio:0.7,desc:'じぶんの HPを 70% かいふく'},
-  ougi:{name:'ひでんおうぎ',mp:14,target:'enemy',kind:'phys',mult:3.0,crit:0.5,desc:'かいしんが でやすい おうぎ'},
+  ougi:{name:'ひでんおうぎ',mp:14,target:'enemy',kind:'phys',mult:2.2,crit:0.5,desc:'かいしんが でやすい おうぎ'},
   kagenui:{name:'かげぬい',mp:5,target:'enemy',kind:'phys',mult:1.2,stun:0.7,desc:'かげを ぬいとめ てきを うごけなくする'},
   shuriken:{name:'しゅりけん',mp:8,target:'random',kind:'phys',mult:0.9,hits:[3,3],ranged:true,desc:'ランダムに 3かい しゅりけんを なげる'},
   kubihane:{name:'くびはね',mp:12,target:'enemy',kind:'phys',mult:1.5,kill:0.4,desc:'まれに てきを いっぱつで しとめる'},
   tsuranuki:{name:'つらぬきのや',mp:6,target:'enemy',kind:'phys',mult:2.2,pierce:true,ranged:true,desc:'まもりを つらぬく や'},
   hoshifuri:{name:'ほしふりのや',mp:12,target:'enemies',kind:'phys',mult:1.1,ranged:true,desc:'てき ぜんたいに やを ふらせる'},
-  isshi:{name:'いっしひっちゅう',mp:15,target:'enemy',kind:'phys',mult:4.0,ranged:true,sure:true,desc:'かならず あたる いっぱつ'},
+  isshi:{name:'いっしひっちゅう',mp:15,target:'enemy',kind:'phys',mult:3.0,ranged:true,sure:true,desc:'かならず あたる いっぱつ'},
   yakusou:{name:'薬草のちしき',mp:6,target:'allies',kind:'heal',pow:[40,55],field:true,desc:'なかま ぜんいんを かいふく'},
   wana:{name:'しかけわな',mp:6,target:'enemies',kind:'stunall',rate:0.6,desc:'てきを ひるませやすい'},
   monogari:{name:'まものがり',mp:12,target:'enemies',kind:'phys',mult:1.4,ranged:true,desc:'てき ぜんたいを いぬく'},
@@ -556,7 +557,7 @@ const SK={
   inori:{name:'せいなるいのり',mp:8,target:'allies',kind:'rally',desc:'なかまの こうげき力と みのまもりが あがる'},
   resurrection:{name:'リザレクション',mp:30,target:'deadall',kind:'revive',full:true,field:true,desc:'しんだ なかま ぜんいんを ぜんかいで いきかえらせる'},
   grandheal:{name:'グランドヒール',mp:28,target:'allies',kind:'fullheal',field:true,desc:'なかま ぜんいんの HPを ぜんかい'},
-  shinpan:{name:'しんぱんのつち',mp:12,target:'enemy',kind:'phys',mult:3.0,pierce:true,desc:'かみの さばきを くだす いちげき'},
+  shinpan:{name:'しんぱんのつち',mp:12,target:'enemy',kind:'phys',mult:2.2,pierce:true,desc:'かみの さばきを くだす いちげき'},
 };
 const TYPE_NAME={sword:'剣',axe:'斧',mace:'メイス',spear:'槍',katana:'刀',claw:'ツメ',bow:'弓',staff:'杖',dagger:'短剣',cloth:'服',light:'軽鎧',heavy:'重鎧',robe:'ローブ'};
 const WEAPON_TYPES=['sword','axe','mace','spear','katana','claw','bow','staff','dagger'],ARMOR_TYPES=['cloth','light','heavy','robe'];
@@ -714,7 +715,7 @@ Object.entries(DROPS).forEach(([k,d])=>MON[k].drop=d);
 const BAL={mid:{ids:['wolf','ant','wizard','bigshroom','harpy','whirl','golem','sorcerer'],hp:1.6,atk:1.45,def:1.2,exp:1.25},
   late:{ids:['dknight','gargoyle','flame','reaper'],hp:2.0,atk:1.85,def:1.25,exp:1.25},
   stormlord:{ids:['stormlord'],hp:1.9,atk:1.5,def:1,exp:1}};
-Object.values(BAL).forEach(b=>b.ids.forEach(k=>{const m=MON[k];m.hp=Math.round(m.hp*b.hp);m.atk=Math.round(m.atk*b.atk);m.def=Math.round(m.def*b.def);m.exp=Math.round(m.exp*b.exp);m.gold=Math.round(m.gold*b.exp);}));
+Object.values(BAL).forEach(b=>b.ids.forEach(k=>{const m=MON[k];m.spow=1+(b.atk-1)*0.6;m.hp=Math.round(m.hp*b.hp);m.atk=Math.round(m.atk*b.atk);m.def=Math.round(m.def*b.def);m.exp=Math.round(m.exp*b.exp);m.gold=Math.round(m.gold*b.exp);}));
 const ESKILL={
   spore:{msg:'どくのこなを まきちらした！',target:'all',pow:[5,8]},
   spore2:{msg:'もうどくの こなを まきちらした！',target:'all',pow:[11,16]},
@@ -746,8 +747,17 @@ const WR=["##############","#::::###::::^#","#:W::#:::#::^#","#:,:::::#:::^#","#
 const SEA='~'.repeat(30);
 const WORLD_BASE=WL.map((l,i)=>l+(i===12?'==':'~~')+WR[i]).concat([SEA,SEA,
   '~'.repeat(18)+'##pp#pp,p#~~','~'.repeat(18)+'#p#ppp#pp#~~','~'.repeat(18)+'#ppp#pppp#~~','~'.repeat(18)+'##pX####p#~~','~'.repeat(18)+'##########~~',SEA]);
+const WORLD_FLOOR_CH={'.':1,',':1,':':1,'p':1,'=':1};
 // ワールドは 1マスを 2×2に ひろげて 2ばいの 広さにする
-const WORLD_ROWS=WORLD_BASE.flatMap(r=>{const d=r.split('').map(c=>c+c).join('');return [d,d];});
+const WORLD_ROWS0=WORLD_BASE.flatMap(r=>{const d=r.split('').map(c=>c+c).join('');return [d,d];});
+// 町・洞窟・塔・ほこら・魔王城は 2×2の うち 1マスだけを 入口に し、のこりは まわりの 地形で うめる
+const GATE_KEEP={T:[1,0],S:[0,0],C:[0,1],W:[0,1],R:[0,0],X:[0,0]};
+const WORLD_ROWS=(()=>{const g=WORLD_ROWS0.map(r=>r.split(''));const walk=c=>!!WORLD_FLOOR_CH[c];
+  WORLD_BASE.forEach((row,by)=>[...row].forEach((c,bx)=>{const k=GATE_KEEP[c];if(!k)return;
+    const cnt={};[[1,0],[-1,0],[0,1],[0,-1]].forEach(([dx,dy])=>{const n=(WORLD_BASE[by+dy]||'')[bx+dx];if(n&&n!=='~'&&!GATE_KEEP[n])cnt[n]=(cnt[n]||0)+1;});
+    const fill=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]||walk(b)-walk(a))[0]||'.';
+    for(let oy=0;oy<2;oy++)for(let ox=0;ox<2;ox++)if(ox!==k[0]||oy!==k[1])g[by*2+oy][bx*2+ox]=fill;}));
+  return g.map(r=>r.join(''));})();
 const CAVE1=["####################","#<....#.......#....#","#.##..#.####..#.##.#","#.#...#....#..#..#.#","#.#.###.##.#.###.#.#","#...#...#..#.....#.#","###.#.###.####.###.#","#...#...#....#.....#","#.#####.####.#.###.#","#.....#....#.#...#.#","#.###.####.#.###.#.#","#.#X#......#...#.#.#","#.#.########.#.#...#","#.#..........#.###.#","#...########...#..>#","####################"];
 const CAVE2=["####################","#<.......#.........#","#.######.#.#######.#","#.#....#.#.#.....#.#","#.#.##.#...#.###.#.#","#...#..#####.#.#...#","#####.##.....#.###.#","#.....#..###.#...#.#","#.#####.##.#.###.#.#","#.......#..#...#...#","########.#####.#####","#..................#","#.#######E########.#","#.#X....#Y#.....X#.#","#.......####.......#","####################"];
 const TOWER1=["##############","#......#.....#","#.####.#.###.#","#.#X.#...#>..#","#.#..#####.#.#","#.#........#.#","#.######.###.#","#......#.....#","######.#####.#","#X.....#.....#","#.####.#.###.#","#....#...#...#","#.##.##<##.#.#","##############"];
@@ -827,7 +837,7 @@ const TILE_KEYS=['forest','mount','townR','townS','caveEnt','towerEnt','castleGa
 const tileArt=new Image();tileArt.onload=()=>{const c=document.createElement('canvas');c.width=TS;c.height=TS;const x=c.getContext('2d');
   TILE_KEYS.forEach((k,i)=>{x.clearRect(0,0,TS,TS);x.drawImage(tileArt,i*TS,0,TS,TS,0,0,TS,TS);T[k]=new Uint32Array(x.getImageData(0,0,TS,TS).data.buffer.slice(0));});};
 function loadTileArt(){tileArt.src='assets/tiles.png';gateArt.src='assets/gates.png';}
-// 2マスで 1つの 入口に なる たてもの（町・洞窟・塔・ほこら・魔王城）
+// 1マスの 入口に なる たてもの（町・洞窟・塔・ほこら・魔王城）。絵は 128x64 を 1マスに おさめて えがく
 const GATE_KEYS=['T','S','C','W','R','X'],GT={};const gateArt=new Image();
 gateArt.onload=()=>{const c=document.createElement('canvas');c.width=128;c.height=64;const x=c.getContext('2d');
   GATE_KEYS.forEach((k,i)=>{x.clearRect(0,0,128,64);x.drawImage(gateArt,i*128,0,128,64,0,0,128,64);GT[k]=new Uint32Array(x.getImageData(0,0,128,64).data.buffer.slice(0));});};
@@ -903,6 +913,7 @@ function growth(m){const Rc=RACES[m.race],J=JOBS[m.job],Sx=GENDERS[m.sex||'male'
 function learn(m){
   const got=[];const add=(lv,s)=>{if(m.lv>=+lv&&!m.skills.includes(s)){m.skills.push(s);got.push(s);}};
   Object.entries(RACES[m.race].skills).forEach(([l,s])=>add(l,s));Object.entries(JOBS[m.job].skills).forEach(([l,s])=>add(l,s));
+  if(m.baseJob&&JOBS[m.baseJob])Object.entries(JOBS[m.baseJob].skills).forEach(([l,s])=>add(l,s));
   if(isHero(m)&&G)(G.blessings||[]).forEach(b=>{if(BLESSINGS[b].skill)add(1,BLESSINGS[b].skill);});
   return got;
 }
@@ -1102,7 +1113,9 @@ async function goMap(id,x,y,d){sfx('stairs');await fade(1);loadMap(id,x,y,d);awa
 function onArrive(){
   markSeen();updHud();
   const k=G.x+','+G.y;
-  if(map.stairs&&map.stairs[k]){const [m,x,y,d]=map.stairs[k];run(()=>goMap(m,x,y,d));return;}
+  // 階段は ふむと きいてくる（「いいえ」なら その まま とおりぬけられる）
+  if(map.stairs&&map.stairs[k]){const [m,x,y,d]=map.stairs[k];const sp=sprites.find(s=>s.type==='stairs'&&s.x===G.x&&s.y===G.y);const up=sp?sp.up:true;
+    run(async()=>{const c=await ask(`${DUNGEONS[m].name}へ\nかいだんを ${up?'のぼり':'おり'}ますか？`);closeMsg();if(c===0)await goMap(m,x,y,d);});return;}
   const c=cellAt(G.x,G.y);
   if(map.theme==='world'&&c==='p'){sfx('poison');flash('#8a3ab0',1,50);G.party.forEach(m=>{if(m.hp>0)m.hp=Math.max(0,m.hp-R(1,3));});updBar();if(!alive().length){run(wipeOut);return;}}
   // encounter gauge
@@ -1173,7 +1186,7 @@ function render3D(cx,cy,ang){
     let tx=Math.floor(wx*TS);if(side===0&&rdx>0)tx=TS-1-tx;if(side===1&&rdy<0)tx=TS-1-tx;
     let tex=wallTex(c,mx,my),tw=TS;
     const big=outdoor&&GT[c];
-    if(big){let u=((side===0?(my&1):(mx&1))+wx)/2;if(side===0&&rdx>0)u=1-u;if(side===1&&rdy<0)u=1-u;tx=Math.min(127,Math.floor(u*128));tex=big;tw=128;}
+    if(big){let u=wx;if(side===0&&rdx>0)u=1-u;if(side===1&&rdy<0)u=1-u;tx=Math.min(127,Math.floor(u*128));tex=big;tw=128;}
     const br=(outdoor?1:clamp(1.15-pd/LR,0,1))*(side?0.78:1),fm=outdoor?clamp((pd-3)/16,0,0.92):0;
     const step=TS/lh;let tp=(Math.max(0,ds)-HALF+lh/2)*step;
     for(let y=Math.max(0,ds);y<=Math.min(H-1,de);y++){const ty=Math.min(TS-1,tp|0);tp+=step;const px=tex[ty*tw+tx];if(big&&(px>>>24)<128)continue;buf[y*W+x]=shade(px,br,fm,fr,fg,fb);}
@@ -1775,8 +1788,9 @@ async function foeEvent(f){
   else await worldClear();
 }
 function applyWorld(){
-  const D0=curW().demon,base={hp:2380,atk:175,def:81};
+  const D0=curW().demon,base={hp:4800,atk:175,def:81};
   Object.assign(MON.demon,{name:D0.name,pal:D0.pal,hp:D0.hp||base.hp,atk:D0.atk||base.atk,def:D0.def||base.def});
+  MON.demon.spow=MON.demon.atk/125;
   SPRC.delete('m:demon');SPRT.delete('m:demon');
 }
 async function goddessScene(){await fade(1);scene='goddess';clearUI();updBar();updHud();playBgm('goddess');await fade(0);}
@@ -1873,9 +1887,9 @@ async function battleStart(ids,opt){
   if(map&&G&&scene==='explore'){const [cx,cy,a]=camera();render3D(cx,cy,a);}
   bgSnap.getContext('2d').drawImage(cv,0,0);
   const counts={},seen={};ids.forEach(id=>counts[id]=(counts[id]||0)+1);
-  B={opt,fx:null,atkUp:false,guard:false,selfDef:new Set(),selfAtk:new Set(),selfEva:new Set(),defend:new Set(),downed:new Set(),cover:{},coverAll:undefined,phalanx:false,graceUsed:false,phoenixUsed:false,enemies:ids.map(id=>{
+  B={opt,fx:null,atkUp:false,guard:false,barrier:false,selfDef:new Set(),selfAtk:new Set(),selfEva:new Set(),defend:new Set(),downed:new Set(),cover:{},coverAll:undefined,phalanx:false,graceUsed:false,phoenixUsed:false,enemies:ids.map(id=>{
     const m=MON[id];let label=m.name;if(counts[id]>1){seen[id]=seen[id]||0;label+='ABCD'[seen[id]++];}
-    const W0=curW(),sc=(id==='demon'&&W0.demonScale!=null)?W0.demonScale:W0.scale,xs=W0.expScale!=null?W0.expScale:sc,hp=Math.round(m.hp*sc);return Object.assign({},m,{id,label,hp,mhp:hp,atk:Math.round(m.atk*sc),def:Math.round(m.def*sc),exp:Math.round(m.exp*xs),gold:Math.round(m.gold*xs),sleep:0,stun:false,flash:0,alpha:1,dead:false,healed:false,half:false});
+    const W0=curW(),sc=(id==='demon'&&W0.demonScale!=null)?W0.demonScale:W0.scale,xs=W0.expScale!=null?W0.expScale:sc,hp=Math.round(m.hp*sc);return Object.assign({},m,{id,label,hp,mhp:hp,atk:Math.round(m.atk*sc),def:Math.round(m.def*sc),exp:Math.round(m.exp*xs),gold:Math.round(m.gold*xs),spow:(m.spow||1)*sc,sleep:0,stun:false,flash:0,alpha:1,dead:false,healed:false,half:false});
   })};
   scene='battle';clearUI();updHud();updBar(-1);playBgm(opt.boss?'boss':'battle');
   const e0=B.enemies[0];
@@ -1989,10 +2003,12 @@ const liveEnemies=()=>B.enemies.filter(e=>!e.dead);
 function retarget(t){if(B.enemies[t]&&!B.enemies[t].dead)return B.enemies[t];const l=liveEnemies();return l.length?pick(l):null;}
 function critRate(m,bonus){let c=1/32+lukOf(m)/500+(bonus||0);if(m.race==='beast')c+=0.06;c+=JOBS[m.job].crit||0;if(isHero(m)&&hasBless('fortune'))c+=0.2;return c;}
 const pinch=m=>m.race==='human'&&m.hp>0&&m.hp<=m.mhp/4;
-function phys(atk,def,crit){
-  if(Math.random()<crit)return {d:Math.floor(atk*(0.95+Math.random()*0.1)),crit:true};
-  const base=(atk-def/2)/2;if(base<1)return {d:Math.random()<0.5?1:0};
-  return {d:Math.max(1,Math.floor(base*(0.85+Math.random()*0.3)))};
+function phys(atk,def,crit,mult){
+  mult=mult||1;
+  if(Math.random()<crit)return {d:Math.floor(atk*mult*(0.95+Math.random()*0.1)),crit:true};
+  // ダメージ = こうげき÷2 × こうげき÷(こうげき＋しゅび)。しゅびが たかいほど わりあいで へる
+  const base=atk>0?atk/2*atk/(atk+Math.max(0,def)):0;if(base<1)return {d:Math.random()<0.5?1:0};
+  return {d:Math.max(1,Math.floor(base*mult*(0.85+Math.random()*0.3)))};
 }
 async function hitEnemy(e,d){
   e.hp-=d;e.flash=14;if(e.sleep&&d>0&&Math.random()<0.5)e.sleep=0;
@@ -2005,9 +2021,9 @@ async function physHit(m,i,e,s){
   if(!s.sure&&Math.random()<evadeRate(e.agi,dexOf(m))){sfx('miss');await BS(`${e.label}は ひらりと みをかわした！`);return;}
   if(s.acc&&Math.random()>s.acc){sfx('miss');await BS('しかし はずれてしまった！');return;}
   const ranged=s.ranged||(wpn(m)&&wpn(m).type==='bow');
-  let atk=atkOf(m)*(s.mult||1)*(B.atkUp?1.25:1)*(B.selfAtk.has(i)?1.5:1)*(pinch(m)?1.25:1);if(isBack(i)&&!ranged)atk*=0.6;
+  let atk=atkOf(m)*(B.atkUp?1.25:1)*(B.selfAtk.has(i)?1.5:1)*(pinch(m)?1.25:1);if(isBack(i)&&!ranged)atk*=0.6;
   if(s.kill&&!e.boss&&Math.random()<s.kill){sfx('crit');await flash('#fff',1,50);e.hp=0;e.flash=14;e.dead=true;e.dying=true;await BS(`いっぱつで ${e.label}を しとめた！`);return;}
-  const r=phys(Math.round(atk),s.pierce?e.def/2:e.def,critRate(m,s.crit));
+  const r=phys(Math.round(atk),s.pierce?e.def/2:e.def,critRate(m,s.crit),s.mult||1);
   if(r.crit){sfx('crit');await flash('#fff',1,50);await BS('かいしんの いちげき！');}else sfx('hit');
   if(r.d<=0){await BS(`ミス！ ${e.label}に ダメージを あたえられない！`);return;}
   await hitEnemy(e,r.d);
@@ -2030,7 +2046,7 @@ async function doAct(a){
   if(s.kind==='cover'||s.kind==='phalanx'||s.kind==='coverall'||m.mp<s.mp){await BSC(`${m.name}は ${s.name}を つかおうとした！\nしかし MPが たりない！`);return;}
   if(s.kind==='grace'&&B.graceUsed){await BSC(`${m.name}は いのった… しかし\nきょうは もう 力が たりない。`);return;}
   m.mp-=s.mp;updBar();
-  const isMagic=['magic','heal','fullheal','revive','sleep','defup'].includes(s.kind);
+  const isMagic=['magic','heal','fullheal','revive','sleep','defup','barrier'].includes(s.kind);
   await BSC(isMagic?`${m.name}は ${s.name}を となえた！`:`${m.name}の ${s.name}！`);
   switch(s.kind){
     case 'phys':{
@@ -2041,7 +2057,7 @@ async function doAct(a){
     case 'magic':{
       sfx({fire:'fire',ice:'ice',zap:'zap',holy:'holy',wind:'ice'}[s.fx]||'magic');B.fx={c:{fire:'#ff7a1a',ice:'#9fe8ff',zap:'#ffffff',holy:'#fff3b0',wind:'#c8ffd8'}[s.fx]||'#fff',t:18};
       const tg=s.target==='enemies'?liveEnemies():[retarget(a.target)].filter(Boolean);
-      for(const e of tg){if(!e.dead)await hitEnemy(e,magicDmg(m,s.pow));}
+      for(const e of tg){if(!e.dead)await hitEnemy(e,Math.round(magicDmg(m,s.pow)*(e.id==='demon'?0.7:1)));}
       break;}
     case 'heal':case 'fullheal':case 'revive':{
       const tg=s.target==='allies'?alive():s.target==='deadall'?G.party.filter(x=>x.hp<=0):[G.party[a.target]];
@@ -2051,6 +2067,7 @@ async function doAct(a){
     case 'selfatk':sfx('magic');B.selfAtk.add(a.who);await BS(`${m.name}の こうげき力が ぐーんと あがった！`);break;
     case 'selfevade':sfx('magic');B.selfEva.add(a.who);await BS(`${m.name}は みのこなしが かるくなった！`);break;
     case 'sleep':sfx('magic');for(const e of liveEnemies()){if(!e.boss&&Math.random()<(s.rate||0.6)){e.sleep=R(2,3);await BS(`${e.label}を ねむらせた！`);}else await BS(`${e.label}には きかなかった！`);}break;
+    case 'barrier':sfx('magic');B.barrier=true;B.fx={c:'#c8a0ff',t:14};await BS('ふしぎな まくが なかまを つつんだ！\nじゅもんや ブレスに つよくなった！');break;
     case 'defup':sfx('magic');B.guard=true;B.fx={c:'#7ab0ff',t:14};await BS('みんなの みのまもりが あがった！');break;
     case 'atkup':sfx('magic');B.atkUp=true;B.fx={c:'#ff9a5a',t:14};await BS('みんなの こうげき力が あがった！');break;
     case 'selfdef':sfx('magic');B.selfDef.add(a.who);await BS(`${m.name}の みのまもりが ぐーんと あがった！`);break;
@@ -2072,6 +2089,7 @@ async function hurtMember(i,d,physical){
   else if(physical&&B.cover[i]!==undefined&&B.cover[i]!==i&&G.party[B.cover[i]].hp>0&&!B.downed.has(B.cover[i])){const p=B.cover[i];await BS(`${G.party[p].name}が ${G.party[i].name}を かばった！`);i=p;}
   const m=G.party[i];
   if(physical){if(isBack(i))d*=0.7;if(B.phalanx)d*=0.5;if(m.race==='dwarf')d*=0.85;}
+  else if(B.barrier)d*=0.5;
   if(B.defend.has(i))d*=0.5;d=Math.max(physical?0:1,Math.floor(d));
   m.hp=Math.max(0,m.hp-d);sfx('hurt');shake();updBar();
   await BS(`${m.name}は ${d}の ダメージを うけた！`);
@@ -2082,10 +2100,10 @@ async function enemyAct(e){
   if(e.dead||!alive().length)return;
   if(e.sleep>0){e.sleep--;await BSC(e.sleep>0?`${e.label}は ねむっている。`:`${e.label}は めをさました！`);return;}
   if(e.stun){e.stun=false;await BSC(`${e.label}は ひるんで うごけない！`);return;}
-  if(e.id==='demon'&&!e.healed&&e.hp<e.mhp*0.25){e.healed=true;e.hp=Math.min(e.mhp,e.hp+480);sfx('heal');await BSC(`${demonShort()}は やみの 力を すいこんだ！`);await BS(`${demonShort()}の きずが ふさがっていく！`);return;}
+  if(e.id==='demon'&&!e.healed&&e.hp<e.mhp*0.25){e.healed=true;e.hp=Math.min(e.mhp,e.hp+Math.round(e.mhp*0.2));sfx('heal');await BSC(`${demonShort()}は やみの 力を すいこんだ！`);await BS(`${demonShort()}の きずが ふさがっていく！`);return;}
   let skill=null;const roll=Math.random()*100;let acc=0;
   for(const [s,p] of (e.skills||[])){acc+=p;if(roll<acc){skill=s;break;}}
-  if(skill==='wave'&&!B.guard&&!B.atkUp)skill=null;
+  if(skill==='wave'&&!B.guard&&!B.atkUp&&!B.barrier)skill=null;
   if(!skill){
     const t=pickTarget(),tm=G.party[t];await BSC(`${e.label}の こうげき！`);
     if(Math.random()<playerEva(t,e)){sfx('miss');await BS(`${tm.name}は ひらりと みをかわした！`);return;}
@@ -2095,11 +2113,11 @@ async function enemyAct(e){
   }
   const S=ESKILL[skill];await BSC(`${e.label}は ${S.msg}`);
   if(S.fx)B.fx={c:S.fx==='dark'?'#6a1a9a':'#ff7a1a',t:20};
-  if(S.target==='dispel'){B.guard=false;B.atkUp=false;sfx('magic');await BS('なかまに かかっていた 力が きえた！');return;}
-  if(S.target==='all'){if(S.fx)sfx('fire');for(const i of G.party.map((m,i)=>i).filter(i=>G.party[i].hp>0))await hurtMember(i,R(S.pow[0],S.pow[1]),false);return;}
+  if(S.target==='dispel'){B.guard=false;B.atkUp=false;B.barrier=false;sfx('magic');await BS('なかまに かかっていた 力が きえた！');return;}
+  if(S.target==='all'){if(S.fx)sfx('fire');for(const i of G.party.map((m,i)=>i).filter(i=>G.party[i].hp>0))await hurtMember(i,Math.round(R(S.pow[0],S.pow[1])*(e.spow||1)),false);return;}
   const t=pickTarget();
-  if(S.mult){if(Math.random()<playerEva(t,e)){sfx('miss');await BS(`${G.party[t].name}は ひらりと みをかわした！`);return;}const r=phys(Math.floor(e.atk*S.mult),pdef(t),0);await hurtMember(t,Math.max(1,r.d),true);}
-  else{if(S.fx)sfx('fire');await hurtMember(t,R(S.pow[0],S.pow[1]),false);}
+  if(S.mult){if(Math.random()<playerEva(t,e)){sfx('miss');await BS(`${G.party[t].name}は ひらりと みをかわした！`);return;}const r=phys(e.atk,pdef(t),0,S.mult);await hurtMember(t,Math.max(1,r.d),true);}
+  else{if(S.fx)sfx('fire');await hurtMember(t,Math.round(R(S.pow[0],S.pow[1])*(e.spow||1)),false);}
 }
 function drawBattle(){
   ctx.drawImage(bgSnap,0,0);ctx.fillStyle='rgba(0,0,10,.5)';ctx.fillRect(0,0,W,H);
@@ -2134,6 +2152,7 @@ function migrateSave(g){
     if(m.dex==null){const i=STATS.indexOf('dex'),R0=RACES[m.race],J0=JOBS[m.baseJob||m.job]||JOBS.hero;m.dex=Math.round(R0.base[i]+J0.base[i]+(R0.g[i]+J0.g[i])*(m.lv-1));}
     (m.skills||[]).splice(0,m.skills.length,...m.skills.filter(s=>SK[s]));
   });
+  const G0=G;G=g;(g.party||[]).concat(g.reserve||[]).forEach(m=>{if(m.skills)learn(m);});(g.worlds||[]).forEach(w=>(w.members||[]).forEach(m=>{if(m.skills)learn(m);}));G=G0;
 }
 async function titleScreen(){
   scene='title';G=null;clearUI();updBar();updHud();playBgm('title');

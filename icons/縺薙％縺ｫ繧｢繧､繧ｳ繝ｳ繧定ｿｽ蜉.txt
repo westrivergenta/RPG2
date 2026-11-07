@@ -1,0 +1,8 @@
+この フォルダには monsters.webp だけが 入っています。
+もとの フォルダから 次の 画像を ここに コピーしてから アップロードしてください。
+
+  portraits.jpg / rulers.jpg / alliance.jpg / goddess.webp / tiles.png / gates.png
+  title.jpg / town1.jpg / town2.jpg / town3.jpg / town4.jpg / town5.jpg / selka.jpg
+
+icons フォルダにも、もとの icon-192.png / icon-512.png / icon-maskable-512.png / apple-touch-icon.png を 入れてください。
+（この ファイルは コピーが おわったら けして かまいません）
